@@ -44,7 +44,7 @@ def upload_file():
       #-------------------------Currently manually giving userid---------------------------------
       uid = 'daniyal012'
       #-------------------------Extracting filetype from filename--------------------------------
-      ftype = fname.split('.')[-1]
+      ftype = fn.split('.')[-1]
       #-------------------------Inserting into db---------------------------------
       cursor_obj.execute("INSERT INTO public.dataset(file_size, upload_time, user_id, file_type, file_name, data) VALUES(%s, %s, %s, %s,%s, %s);",(fsize, dt_object, uid, ftype, fname, d))
       con.commit()
