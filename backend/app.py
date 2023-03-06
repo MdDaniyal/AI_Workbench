@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from datetime import datetime
 import calendar
 import time
@@ -48,9 +48,12 @@ def upload_file():
       #-------------------------Inserting into db---------------------------------
       cursor_obj.execute("INSERT INTO public.dataset(file_size, upload_time, user_id, file_type, file_name, data) VALUES(%s, %s, %s, %s,%s, %s);",(fsize, dt_object, uid, ftype, fname, d))
       con.commit()
-      return "File Uploaded Successfully"
+
+      data = {'message' : 'Successfull'}
+      return jsonify(data), 200
   except Exception as e:
-    return str(e)
+    data = {'message' : str(e)}
+    return jsonify(data), 500
   finally:
     cursor_obj.close()
 
