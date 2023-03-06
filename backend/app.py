@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from datetime import datetime
 import calendar
 import time
+import pandas as pd
 import psycopg2
 app = Flask(__name__)
 
@@ -56,6 +57,17 @@ def upload_file():
     return jsonify(data), 500
   finally:
     cursor_obj.close()
+
+@app.route('/datasets/', methods=['GET'])
+def data_sets():
+    try:
+        sql = '''SELECT data_id, file_name, user_id, upload_time, file_size, file_type FROM public.dataset;'''
+        df = pd.read_sql_query(sql, con)
+        d = df.to_json(orient = "records")
+        return jsonify(eval(d)), 200
+    except Exception as e:
+        data = {'message' : str(e)}
+        return jsonify(data), 500
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug = True)
