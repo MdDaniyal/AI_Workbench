@@ -30,6 +30,8 @@ def upload_file():
     ftype = ""
     if request.method == 'POST':
       f = request.files['file']
+      #-------------------------Fetching file data in binary-------------------------------------
+      d = f.read()
       #-------------------------Fetching file name-----------------------------------------------
       fname = f.filename
       #-------------------------Computing file size----------------------------------------------
@@ -41,18 +43,15 @@ def upload_file():
       #-------------------------Currently manually giving userid---------------------------------
       uid = 'daniyal012'
       #-------------------------Extracting filetype from filename--------------------------------
-      for i in  fname:
-        if i == '.':
-          flag = 1
-          continue
-        if flag == 1:
-          ftype += i
+      ftype = fname.split('.')[-1]
       #-------------------------Inserting into db---------------------------------
-      cursor_obj.execute("INSERT INTO public.dataset(file_size, upload_timestamp, user_id, file_type, file_name) VALUES(%s, %s, %s, %s,%s);",(fsize, dt_object, uid, ftype, fname))
+      cursor_obj.execute("INSERT INTO public.dataset(file_size, upload_time, user_id, file_type, file_name, data) VALUES(%s, %s, %s, %s,%s, %s);",(fsize, dt_object, uid, ftype, fname, d))
       con.commit()
       return "File Uploaded Successfully"
-  except:
-    return "Some error Occured"
+  except Exception as e:
+    return str(e)
+  finally:
+    con.close()
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug = True)
