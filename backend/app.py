@@ -33,7 +33,8 @@ def upload_file():
       #-------------------------Fetching file data in binary-------------------------------------
       d = f.read()
       #-------------------------Fetching file name-----------------------------------------------
-      fname = f.filename
+      fn = f.filename
+      fname = fn.split('.')[0]
       #-------------------------Computing file size----------------------------------------------
       fsize = len(d)*0.001
       #-------------------------Fetching current or uploading timestamp--------------------------
