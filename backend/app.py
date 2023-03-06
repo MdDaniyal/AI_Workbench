@@ -35,7 +35,7 @@ def upload_file():
       #-------------------------Fetching file name-----------------------------------------------
       fname = f.filename
       #-------------------------Computing file size----------------------------------------------
-      fsize = len(f.read())*0.001
+      fsize = len(d)*0.001
       #-------------------------Fetching current or uploading timestamp--------------------------
       current_GMT = time.gmtime()
       dt = calendar.timegm(current_GMT)
