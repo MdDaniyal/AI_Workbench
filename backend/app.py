@@ -13,7 +13,6 @@ password="Login@me1",
 host="localhost",
 port= '5432'
 )
-cursor_obj = con.cursor()
 
 
 #-------------------------home page--------------------------------------------------------------
@@ -25,6 +24,7 @@ def welcome():
 #-------------------------upload data------------------------------------------------------------
 @app.route('/upload_data/', methods=['POST'])
 def upload_file():
+  cursor_obj = con.cursor()
   try:
     flag = 0
     ftype = ""
@@ -51,7 +51,7 @@ def upload_file():
   except Exception as e:
     return str(e)
   finally:
-    con.close()
+    cursor_obj.close()
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug = True)
