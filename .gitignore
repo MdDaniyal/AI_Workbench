@@ -10,7 +10,7 @@
 /node_modules
 npm-debug.log
 yarn-error.log
-frontend/.angular/cache/15.2.1/angular-webpack/f353310892f5fb633185ce6abf672597568d0dcf/13.pack
+/frontend/.angular/
 
 # IDEs and editors
 .idea/
