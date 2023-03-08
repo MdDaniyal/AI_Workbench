@@ -13,14 +13,14 @@ export class DatasafeComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 2 }
+          { title: 'Upload Dataset', cols: 1, rows: 1 },
+          { title: 'Datasets Info', cols: 1, rows: 2 }
         ];
       }
 
       return [
-        { title: 'Card 1', cols: 1, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 2 }
+        { title: 'Upload Dataset', cols: 1, rows: 1 },
+        { title: 'Datasets Info', cols: 1, rows: 2 }
       ];
     })
   );
