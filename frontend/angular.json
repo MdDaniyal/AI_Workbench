@@ -1,14 +1,11 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-<<<<<<< HEAD
   "cli": {
     "cache": {
       "enabled": false
     }
   },
-=======
->>>>>>> 0d2bdccdf5fc1db72838d0533b7e40f4ac64aced
   "newProjectRoot": "projects",
   "projects": {
     "AI_Workbench": {

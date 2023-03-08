@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatIconModule} from '@angular/material/icon';
-<<<<<<< HEAD
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -21,11 +20,6 @@ import { DatasafeComponent } from './datasafe/datasafe.component';
     AppComponent,
     NavigatorComponent,
     DatasafeComponent,
-=======
-@NgModule({
-  declarations: [
-    AppComponent
->>>>>>> 0d2bdccdf5fc1db72838d0533b7e40f4ac64aced
   ],
   imports: [
     BrowserModule,
@@ -33,7 +27,6 @@ import { DatasafeComponent } from './datasafe/datasafe.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-<<<<<<< HEAD
     LayoutModule,
     MatButtonModule,
     MatSidenavModule,
@@ -41,8 +34,6 @@ import { DatasafeComponent } from './datasafe/datasafe.component';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-=======
->>>>>>> 0d2bdccdf5fc1db72838d0533b7e40f4ac64aced
   ],
   providers: [],
   bootstrap: [AppComponent]
