@@ -10,7 +10,10 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+<<<<<<< HEAD
 /frontend/.angular/
+=======
+>>>>>>> 0d2bdccdf5fc1db72838d0533b7e40f4ac64aced
 
 # IDEs and editors
 .idea/
