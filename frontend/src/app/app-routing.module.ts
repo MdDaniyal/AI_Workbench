@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+import { DatasafeComponent } from './datasafe/datasafe.component';
+const routes: Routes = [
+  {path:'datasafe', component: DatasafeComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
