@@ -1,0 +1,202 @@
+[
+    {
+        "data_id": 2,
+        "file_name": "Employee Sample Data.xlsx",
+        "file_size": 0,
+        "file_type": "xlsx",
+        "upload_time": 1678115188000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 3,
+        "file_name": "Iris.csv",
+        "file_size": 0,
+        "file_type": "csv",
+        "upload_time": 1678115659000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 4,
+        "file_name": "Iris.csv",
+        "file_size": 0,
+        "file_type": "csv",
+        "upload_time": 1678116122000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 5,
+        "file_name": "EmployeeData.csv",
+        "file_size": 0,
+        "file_type": "csv",
+        "upload_time": 1678116141000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 6,
+        "file_name": "winequality_red.csv",
+        "file_size": 0,
+        "file_type": "csv",
+        "upload_time": 1678116160000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 7,
+        "file_name": "winequality_red.csv",
+        "file_size": 0,
+        "file_type": "csv",
+        "upload_time": 1678116531000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 8,
+        "file_name": "Iris.csv",
+        "file_size": 0,
+        "file_type": "csv",
+        "upload_time": 1678116553000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 26,
+        "file_name": "Employee Sample Data",
+        "file_size": 100,
+        "file_type": "xlsx",
+        "upload_time": 1678130794000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 9,
+        "file_name": "Iris.csv",
+        "file_size": 5,
+        "file_type": "csv",
+        "upload_time": 1678116588000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 10,
+        "file_name": "winequality_red.csv",
+        "file_size": 86,
+        "file_type": "csv",
+        "upload_time": 1678128221000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 11,
+        "file_name": "Employee Sample Data.xlsx",
+        "file_size": 100,
+        "file_type": "xlsx",
+        "upload_time": 1678128314000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 12,
+        "file_name": "EmployeeData.csv",
+        "file_size": 124,
+        "file_type": "csv",
+        "upload_time": 1678128568000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 13,
+        "file_name": "Iris.csv",
+        "file_size": 5,
+        "file_type": "csv",
+        "upload_time": 1678128574000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 14,
+        "file_name": "winequality_red.csv",
+        "file_size": 86,
+        "file_type": "csv",
+        "upload_time": 1678128804000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 16,
+        "file_name": "EmployeeData.csv",
+        "file_size": 124,
+        "file_type": "csv",
+        "upload_time": 1678129500000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 18,
+        "file_name": "Employee Sample Data.xlsx",
+        "file_size": 100,
+        "file_type": "xlsx",
+        "upload_time": 1678129555000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 19,
+        "file_name": "winequality_red",
+        "file_size": 86,
+        "file_type": "winequality_red",
+        "upload_time": 1678129648000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 20,
+        "file_name": "Iris",
+        "file_size": 5,
+        "file_type": "Iris",
+        "upload_time": 1678129788000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 21,
+        "file_name": "Iris",
+        "file_size": 5,
+        "file_type": "csv",
+        "upload_time": 1678129816000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 22,
+        "file_name": "EmployeeData",
+        "file_size": 124,
+        "file_type": "csv",
+        "upload_time": 1678129821000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 23,
+        "file_name": "winequality_red",
+        "file_size": 86,
+        "file_type": "csv",
+        "upload_time": 1678129826000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 24,
+        "file_name": "Employee Sample Data",
+        "file_size": 100,
+        "file_type": "xlsx",
+        "upload_time": 1678129840000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 25,
+        "file_name": "Employee Sample Data",
+        "file_size": 100,
+        "file_type": "xlsx",
+        "upload_time": 1678130670000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 27,
+        "file_name": "Iris",
+        "file_size": 5,
+        "file_type": "csv",
+        "upload_time": 1678130814000,
+        "user_id": "daniyal012"
+    },
+    {
+        "data_id": 28,
+        "file_name": "winequality_red",
+        "file_size": 86,
+        "file_type": "csv",
+        "upload_time": 1678131041000,
+        "user_id": "daniyal012"
+    }
+]

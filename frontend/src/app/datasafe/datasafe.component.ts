@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import data from '../../assets/datsets_api.json';
+
 
 @Component({
   selector: 'app-datasafe',
@@ -8,22 +10,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./datasafe.component.css']
 })
 export class DatasafeComponent {
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Upload Dataset', cols: 1, rows: 1 },
-          { title: 'Datasets Info', cols: 1, rows: 2 }
-        ];
-      }
-
-      return [
-        { title: 'Upload Dataset', cols: 1, rows: 1 },
-        { title: 'Datasets Info', cols: 1, rows: 2 }
-      ];
-    })
-  );
-
+  datasets_source=data
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','user_id'];
   constructor(private breakpointObserver: BreakpointObserver) {}
 }
