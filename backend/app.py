@@ -4,7 +4,9 @@ import calendar
 import time
 import pandas as pd
 import psycopg2
+from flask_cors import CORS, cross_origin
 app = Flask(__name__)
+CORS(app)
 
 #-------------------------connecting to db-------------------------------------------------------
 con = psycopg2.connect(
@@ -42,6 +44,7 @@ def upload_file():
       current_GMT = time.gmtime()
       dt = calendar.timegm(current_GMT)
       dt_object = datetime.fromtimestamp(dt)
+
       #-------------------------Currently manually giving userid---------------------------------
       uid = 'daniyal012'
       #-------------------------Extracting filetype from filename--------------------------------
@@ -64,6 +67,7 @@ def data_sets():
     try:
         sql = '''SELECT data_id, file_name, user_id, upload_time, file_size, file_type FROM public.dataset;'''
         df = pd.read_sql_query(sql, con)
+        df['upload_time'] = df['upload_time'].astype('str')
         d = df.to_json(orient = "records")
         return jsonify(eval(d)), 200
     except Exception as e:

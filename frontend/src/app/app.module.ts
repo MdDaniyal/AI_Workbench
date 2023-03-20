@@ -15,6 +15,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavigatorComponent } from './navigator/navigator.component';
 import { DatasafeComponent } from './datasafe/datasafe.component';
+import { HttpClientModule} from '@angular/common/http' 
+import { DatePipe } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +39,10 @@ import { DatasafeComponent } from './datasafe/datasafe.component';
     MatCardModule,
     MatMenuModule,
     MatTableModule,
+    HttpClientModule,
+    DatePipe,
+    MatInputModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

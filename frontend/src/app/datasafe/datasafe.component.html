@@ -1,22 +1,42 @@
 <div class="grid-container">
   <h1 class="mat-h1">Datasets Details</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
+  <mat-grid-list cols="2" rowHeight="190px">
 
     <mat-grid-tile colspan=1 rowspan=1>
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            <strong><font size="+2">Upload Data</font></strong>
+            <strong><br><font size="+2">Upload Data <br> <br></font></strong>
           </mat-card-title>
         </mat-card-header>
+        <mat-form-field>
+          <div>
+            <mat-toolbar>
+              <!-- Display files names -->
+              <input matInput [(ngModel)]="fileAttr" readonly name="name" />
+              <!-- Browse Button -->
+              <button mat-flat-button color="primary">Browse File</button>
+            </mat-toolbar>
+            <!-- Fetch selected filed on change -->
+            <input
+              type="file"
+              #fileInput
+              id="uploadFile"
+              (change)="uploadFileEvt($event)"
+              name="uploadFile"
+              multiple="multiple"
+              accept="/*"
+            />
+          </div>
+        </mat-form-field>
       </mat-card>
     </mat-grid-tile>
 
-  <mat-grid-tile colspan=1 rowspan=2>
+  <mat-grid-tile colspan=1 rowspan=4>
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            <strong><font size="+2">Available Datasets</font></strong>
+            <strong><br><font size="+2">Available Datasets <br></font></strong><br>
           </mat-card-title>
         </mat-card-header>
         <div class="table-responsive">
