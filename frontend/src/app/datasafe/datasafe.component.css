@@ -71,3 +71,8 @@
   cursor: pointer;
   position: absolute;
 }
+
+.file-input {
+  display: none;
+}
+

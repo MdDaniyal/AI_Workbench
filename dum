@@ -1,0 +1,32 @@
+Here I am trying to upload a file to my database through API
+
+it is a part of html file :
+<form #userPost="ngForm" (ngSubmit)="onSubmit(userPost)" >
+          <input type="file" name="File" ngModel> <br><br>
+          <button type="submit">submit</button>
+        </form>
+        
+
+        
+it is a part of ts file : 
+
+fileName: any;
+    onSubmit(data:any)
+    {
+      this.user.upload_data(data).subscribe((result)=>{
+        this.fileName=result
+      });
+    }
+    
+  It is a part of service file :  
+  
+    posturl:any = "http://localhost:5000/upload_data/";
+    upload_data(data:any)
+  {
+    return this.http.post(this.posturl,data)
+
+  }
+  
+  Code is compiling but I am getting this error in my console : RROR TypeError: cyclic object value
+  
+ 

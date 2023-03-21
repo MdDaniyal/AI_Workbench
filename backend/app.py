@@ -67,6 +67,7 @@ def data_sets():
     try:
         sql = '''SELECT data_id, file_name, user_id, upload_time, file_size, file_type FROM public.dataset;'''
         df = pd.read_sql_query(sql, con)
+        df=df.sort_values(by='upload_time', ascending=False)
         df['upload_time'] = df['upload_time'].astype('str')
         d = df.to_json(orient = "records")
         return jsonify(eval(d)), 200

@@ -18,7 +18,7 @@ import { DatasafeComponent } from './datasafe/datasafe.component';
 import { HttpClientModule} from '@angular/common/http' 
 import { DatePipe } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +43,7 @@ import { FormsModule } from '@angular/forms';
     DatePipe,
     MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
