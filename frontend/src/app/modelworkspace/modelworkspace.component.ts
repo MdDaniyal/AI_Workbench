@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { UserService } from './user.service'
 @Component({
   selector: 'app-modelworkspace',
   templateUrl: './modelworkspace.component.html',
@@ -7,24 +7,15 @@ import { Component } from '@angular/core';
 })
 export class ModelworkspaceComponent {
   show_part2: Boolean = false;
-  listofdata: any[] = [
-    {
-      "dataid": 1,
-      "dataname": "Iris.csv"
-    },
-    {
-      "dataid": 2,
-      "dataname": "Wine.csv"
-    },
-    {
-      "dataid": 3,
-      "dataname": "Iris.csv"
-    },
-    {
-      "dataid": 4,
-      "dataname": "gfg.csv"
-    }
-  ];
+  listofdata: any;
+
+  constructor(private user: UserService) {
+    this.user.getData().subscribe(data => {
+      this.listofdata = data
+    });
+
+  }
+
   proceed($event: any) {
     this.show_part2 = true;
   }
