@@ -1,0 +1,48 @@
+<mat-grid-list cols="3">
+    <div class="first-grid">
+        <mat-grid-tile colspan=1 rowspan=1>
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <strong><br>
+                            <font size="+2">Configure Experiment 1/2 <br> <br></font>
+                        </strong>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-form-field appearance="fill">
+                    <mat-label>Experiment Name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose dataset</mat-label>
+                    <mat-select>
+                        <div *ngFor="let option of listofdata">
+                                <mat-option value={{option.dataid}}>{{option.dataname}}</mat-option>
+                        </div>
+                        <!-- <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Textarea</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" (click)="this.proceed($event)">Proceed</button>
+            </mat-card>
+        </mat-grid-tile>
+    </div>
+    <div class="Second-grid" *ngIf="show_part2">
+        <mat-grid-tile colspan=2 rowspan=1>
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <strong><br>
+                            <font size="+2">Configure Experiment 2/2 <br> <br></font>
+                        </strong>
+                    </mat-card-title>
+                </mat-card-header>
+            </mat-card>
+        </mat-grid-tile>
+    </div>
+</mat-grid-list>

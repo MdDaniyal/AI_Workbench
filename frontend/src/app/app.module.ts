@@ -19,11 +19,14 @@ import { HttpClientModule} from '@angular/common/http'
 import { DatePipe } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModelworkspaceComponent } from './modelworkspace/modelworkspace.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
     NavigatorComponent,
     DatasafeComponent,
+    ModelworkspaceComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
