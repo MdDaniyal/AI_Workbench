@@ -1,0 +1,38 @@
+{
+    "Classification": [
+        {
+            "value": "logreg",
+            "model": "Logistic Regression"
+        },
+        {
+            "value": "logreg",
+            "model": "Logistic Regression"
+        },
+        {
+            "value": "logreg",
+            "model": "Logistic Regression"
+        },
+        {
+            "value": "logreg",
+            "model": "Logistic Regression"
+        }
+    ],
+    "Regression": [
+        {
+            "value": "logreg",
+            "model": "Linear Regression"
+        },
+        {
+            "value": "logreg",
+            "model": "Logistic Regression"
+        },
+        {
+            "value": "logreg",
+            "model": "Logistic Regression"
+        },
+        {
+            "value": "logreg",
+            "model": "Logistic Regression"
+        }
+    ]
+}

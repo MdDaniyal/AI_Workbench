@@ -9,24 +9,35 @@
                         </strong>
                     </mat-card-title>
                 </mat-card-header>
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="fill" >
                     <mat-label>Experiment Name</mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="expName">
                 </mat-form-field>
+
+                
                 <mat-form-field appearance="fill">
                     <mat-label>Choose dataset</mat-label>
-                    <mat-select>
+                    <mat-select [(value)]="chosenDataset">
                         <div *ngFor="let option of listofdata">
-                                <mat-option value={{option.dataid}}>{{option.dataname}}</mat-option>
+                            <mat-option value={{option.dataid}}>{{option.dataname}}</mat-option>
                         </div>
-                        <!-- <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option> -->
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>Textarea</mat-label>
-                    <textarea matInput></textarea>
+
+                
+                <mat-radio-group [(ngModel)]="chosenType" (change)="this.mtype()">
+                    <mat-radio-button value="classification">Classification</mat-radio-button>
+                    <mat-radio-button value="regression">Regression</mat-radio-button>
+                </mat-radio-group>
+
+
+                <mat-form-field>
+                    <mat-select placeholder="Select Models" [(value)]="selectedModels" multiple>
+                        <mat-option *ngFor="let model of modelList" value={{model.value}}>{{model.model}}</mat-option>
+                    </mat-select>
                 </mat-form-field>
+
+
 
                 <button mat-raised-button color="primary" (click)="this.proceed($event)">Proceed</button>
             </mat-card>
