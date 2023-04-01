@@ -92,5 +92,16 @@ def dataset_dropdown():
         return jsonify(data), 500
 
 
+@app.route('/dataset_details/', methods=['GET', 'POST'])
+def dataset_details():
+    return "AI_WORKBENCH"
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug = True)
