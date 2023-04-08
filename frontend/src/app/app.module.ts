@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModelworkspaceComponent } from './modelworkspace/modelworkspace.component';
 import { MatSelectModule } from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import {MatRadioModule} from '@angular/material/radio';
     ReactiveFormsModule,
     MatSelectModule,
     MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

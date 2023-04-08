@@ -5,6 +5,8 @@ import time
 import pandas as pd
 import psycopg2
 from flask_cors import CORS, cross_origin
+import json
+import io
 app = Flask(__name__)
 CORS(app)
 
@@ -29,7 +31,6 @@ def welcome():
 def upload_file():
   cursor_obj = con.cursor()
   try:
-    flag = 0
     ftype = ""
     if request.method == 'POST':
       f = request.files['file']
@@ -92,14 +93,32 @@ def dataset_dropdown():
         return jsonify(data), 500
 
 
-@app.route('/dataset_details/', methods=['GET', 'POST'])
-def dataset_details():
-    return "AI_WORKBENCH"
-
-
-
-
-
+@app.route('/dataset_info/', methods=['GET'])
+def dataset_info():
+    cursor_obj = con.cursor()
+    try:
+        dataid = request.args.get('dataid')
+        sql = '''SELECT data, file_type FROM public.dataset where data_id = {};'''.format(dataid)
+        df = pd.read_sql_query(sql, con)
+        dt=io.BytesIO(df['data'].to_list()[0])
+        filetype = df['file_type'].to_list()[0]
+        if filetype == 'csv':
+             df = pd.read_csv(dt)
+        else:
+             df = pd.read_excel(dt)
+        columns_info=pd.DataFrame({'Column_Name':df.dtypes.index, 'Column_Type':df.dtypes})
+        columns_info['Column_Type'] = columns_info['Column_Type'].astype('str')
+        columns_info['checkbox_val'] = True
+        columns_info['checkbox_val'][-1] = False
+        clm = columns_info.to_json(orient = "records")
+        otpt_dict={'column_info':json.loads(clm)}
+        otpt_dict['checkbox_info']=json.loads(columns_info['checkbox_val'].to_json())
+        return jsonify(otpt_dict), 200
+    except Exception as e:
+        data = {'message' : str(e)}
+        return jsonify(data), 500
+    finally:
+        cursor_obj.close()
 
 
 

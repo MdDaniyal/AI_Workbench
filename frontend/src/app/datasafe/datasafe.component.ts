@@ -20,6 +20,11 @@ export class DatasafeComponent {
 
   }
 
+  ngOnInit() {
+    this.refresh();
+    console.log("refreshed")
+  }
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'user_id'];
 
 
