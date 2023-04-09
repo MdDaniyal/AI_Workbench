@@ -1,7 +1,10 @@
 .grid-container {
   margin: 20px;
 }
-
+.container {
+  padding-left: 15px;
+position: relative;
+}
 .dashboard-card {
   position: absolute;
   top: 15px;

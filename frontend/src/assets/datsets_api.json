@@ -19,72 +19,72 @@
         {
             "Column_Name": "Employee ID",
             "Column_Type": "object",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Full Name",
             "Column_Type": "object",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Job Title",
             "Column_Type": "object",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Department",
             "Column_Type": "object",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Business Unit",
             "Column_Type": "object",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Gender",
             "Column_Type": "object",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Ethnicity",
             "Column_Type": "object",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Age",
             "Column_Type": "int64",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Hire Date",
             "Column_Type": "datetime64[ns]",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Annual Salary",
             "Column_Type": "int64",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Bonus %",
             "Column_Type": "float64",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Country",
             "Column_Type": "object",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "City",
             "Column_Type": "object",
-            "checkbox_val": true
+            "checkbox_val": false
         },
         {
             "Column_Name": "Exit Date",
             "Column_Type": "datetime64[ns]",
-            "checkbox_val": false
+            "checkbox_val": true
         }
     ]
 }

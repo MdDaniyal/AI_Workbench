@@ -11,16 +11,10 @@
         </mat-card-header>
 
         <div class="container">
-         <div class="row mt-5">
-           <div class="col-md-4">
-             <div class="mb-3">
-              <label for="formFile" class="form-label">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+              <label for="formFile" class="form-label"></label>
               <input (change)="onFilechange($event)" class="form-control" type="file" id="formFile">
-
-               <button mat-raised-button color="primary" (click)="this.upload()">&nbsp;&nbsp;Upload</button>
-             </div>
-           </div>
-         </div>
+               <button mat-raised-button color="primary" (click)="this.upload()">Upload</button>
+              
         </div>
 
       </mat-card>
@@ -31,7 +25,6 @@
         <mat-card-header>
           <mat-card-title>
             <strong><font size="+2">Available Datasets </font></strong>
-            <button mat-raised-button color="primary" (click)="this.refresh()" >Refresh</button>
           </mat-card-title>
         </mat-card-header>
         <div class="table-responsive">

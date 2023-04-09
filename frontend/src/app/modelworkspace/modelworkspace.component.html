@@ -1,14 +1,14 @@
 <div class="grid-container">
     <h1 class="mat-h1">Datasets Details</h1>
-    <mat-grid-list cols="3" rowHeight="450px">
+    <mat-grid-list cols="4" rowHeight="225px">
 
-    
-        <mat-grid-tile colspan=1 rowspan=1>
+
+        <mat-grid-tile colspan=1 rowspan=2>
             <mat-card class="dashboard-card">
                 <mat-card-header>
                     <mat-card-title>
                         <strong><br>
-                            <font size="+2">Configure Experiment 1/2 <br> <br></font>
+                            <font size="+2">Configure Experiment 1/3 <br> <br></font>
                         </strong>
                     </mat-card-title>
                 </mat-card-header>
@@ -29,7 +29,7 @@
 
 
                 <mat-radio-group [(ngModel)]="chosenType" (change)="this.mtype()">
-                    <mat-radio-button value="classification" >Classification</mat-radio-button>
+                    <mat-radio-button value="classification">Classification</mat-radio-button>
                     <mat-radio-button value="regression">Regression</mat-radio-button>
                 </mat-radio-group>
 
@@ -42,44 +42,80 @@
 
 
 
-                <button mat-raised-button color="primary" (click)="this.proceed($event)">Proceed</button>
+                <button mat-raised-button color="primary" (click)="this.proceed1($event)">Proceed</button>
             </mat-card>
         </mat-grid-tile>
-        
-    <div class="Second-grid" *ngIf="show_part2">
-        <mat-grid-tile colspan=2 rowspan=2>
-            <mat-card class="dashboard-card">
-                <mat-card-header>
-                    <mat-card-title>
-                        <strong><br>
-                            <font size="+2">Configure Experiment 2/2 <br> <br></font>
-                        </strong>
-                    </mat-card-title>
 
-                </mat-card-header>
-                <mat-card-content>
-                    <table>
-                        <tr>
-                            <th>Column Name</th>
-                            <th>Column Type</th>
-                              <th>Training Features</th>
-                            <th>Target Feature</th>
-                        </tr>
-                        <tr *ngFor="let column of columns_info_table">
-                            <td>{{column.Column_Name}}</td>
-                            <td>{{column.Column_Type}}</td>
-                            <section [formGroup]="columns_form">
-                            <td><mat-checkbox formControlName={{column.Column_Name}}></mat-checkbox></td>
-                        </section>
-                            <td><mat-radio-group name="target_features"
-                                    [(ngModel)]="selected_target_feature"><mat-radio-button
-                                        [value]="column.Column_Name"
-                                         ></mat-radio-button></mat-radio-group></td>
-                        </tr>
-                    </table>
-                    <button mat-raised-button color="primary" (click)="this.submit($event)">Submit</button>
-                </mat-card-content>
-            </mat-card>
-        </mat-grid-tile>
-    </div>
-</mat-grid-list>
+        <div class="Second-grid" *ngIf="show_part2">
+            <mat-grid-tile colspan=2 rowspan=4>
+                <mat-card class="dashboard-card">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <strong><br>
+                                <font size="+2">Configure Experiment 2/3 <br> <br></font>
+                            </strong>
+                        </mat-card-title>
+
+                    </mat-card-header>
+                    <mat-card-content>
+                        <table>
+                            <tr>
+                                <th>Column Name</th>
+                                <th>Column Type</th>
+                                <th>Training Features</th>
+                                <th>Target Feature</th>
+                            </tr>
+                            <tr *ngFor="let column of columns_info_table" >
+                                <td>{{column.Column_Name}}</td>
+                                <td>{{column.Column_Type}}</td>
+                                <section [formGroup]="columns_form">
+                                    <td><mat-checkbox formControlName={{column.Column_Name}}></mat-checkbox></td>
+                                </section>
+                                <td><mat-radio-group name="target_features"
+                                    (change)="onTargetFeatureSelection()"
+                                    (click)="previousCheck()"
+                                        [(ngModel)]="selected_target_feature"><mat-radio-button
+                                            [value]="column.Column_Name"
+                                            name="target_features"></mat-radio-button></mat-radio-group></td>
+                            </tr>
+                        </table>
+                        <button mat-raised-button color="primary" (click)="this.proceed2($event)">Proceed</button>
+                    </mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+        </div>
+        <div class="Second-grid" *ngIf="show_part3">
+            <mat-grid-tile colspan=1 rowspan=2>
+                <mat-card class="dashboard-card">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <strong><br>
+                                <font size="+2">Configure Experiment 3/3 <br> <br></font>
+                            </strong>
+                        </mat-card-title>
+
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="label-container">
+                            <label class="example-name-label">Train Size</label>
+                            <label class="train_test_label">{{train_test_split_ratio}}</label>
+                        </div>
+
+
+                        <mat-slider class="train_test_split" [max]=1 [min]=0.1 [step]=0.1>
+                            <input matSliderThumb [(ngModel)]="train_test_split_ratio">
+                        </mat-slider>
+
+
+                        <mat-form-field appearance="fill">
+                            <mat-label>Random State</mat-label>
+                            <input matInput [(ngModel)]="randState">
+                        </mat-form-field>
+                        <div class="center">
+                        <button mat-raised-button color="primary" (click)="this.submit($event)">Submit</button>
+                    </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>

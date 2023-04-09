@@ -76,4 +76,27 @@
     display: none;
   }
   
+  .label-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 10px 0;
+    max-width: 284px;
+  }  
+  .train_test_split {
+    margin: 8px;
+  }
+
+  .mat-mdc-slider {
+    max-width: 300px;
+    width: 100%;
+  }
   
+  .mat-mdc-card + .mat-mdc-card {
+    margin-top: 8px;
+  }
+  .center{position: absolute;
+  top: 78%;
+  left: 85%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  }
