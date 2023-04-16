@@ -13,8 +13,9 @@
         <div class="container">
               <label for="formFile" class="form-label"></label>
               <input (change)="onFilechange($event)" class="form-control" type="file" id="formFile">
+              <div class="right">
                <button mat-raised-button color="primary" (click)="this.upload()">Upload</button>
-              
+              </div>
         </div>
 
       </mat-card>
@@ -33,25 +34,25 @@
                 The actual rendered columns are set as a property on the row definition" -->
         
           <!-- Position Column -->
-          <ng-container matColumnDef="position">
+          <ng-container matColumnDef="file_name">
             <th mat-header-cell *matHeaderCellDef> Dataset </th >
             <td mat-cell *matCellDef="let element"> {{element.file_name}} </td>
           </ng-container>
         
           <!-- Name Column -->
-          <ng-container matColumnDef="name">
+          <ng-container matColumnDef="file_size">
             <th mat-header-cell *matHeaderCellDef> FIle Size </th>
             <td mat-cell *matCellDef="let element"> {{element.file_size}} </td>
           </ng-container>
         
           <!-- Weight Column -->
-          <ng-container matColumnDef="weight">
+          <ng-container matColumnDef="file_type">
             <th mat-header-cell *matHeaderCellDef> FIle Type </th>
             <td mat-cell *matCellDef="let element"> {{element.file_type}} </td>
           </ng-container>
         
           <!-- Symbol Column -->
-          <ng-container matColumnDef="symbol">
+          <ng-container matColumnDef="upload_time">
             <th mat-header-cell *matHeaderCellDef> Upload Time </th>
             <td mat-cell *matCellDef="let element"> {{element.upload_time}} </td>
           </ng-container>

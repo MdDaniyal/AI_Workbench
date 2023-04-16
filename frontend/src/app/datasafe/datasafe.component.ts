@@ -25,7 +25,7 @@ export class DatasafeComponent {
     console.log("refreshed")
   }
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'user_id'];
+  displayedColumns: string[] = ['file_name', 'file_size', 'file_type', 'upload_time', 'user_id'];
 
 
   onFilechange(event: any) {

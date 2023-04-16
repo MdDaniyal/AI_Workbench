@@ -23,6 +23,7 @@ export class ModelworkspaceComponent {
     });
   }
   
+  displayedColumn: string[] = ['column_name', 'column_type', 'training_features', 'target_feature'];
 
   selectedModels: any;
   expName: any;
@@ -36,6 +37,8 @@ export class ModelworkspaceComponent {
   checkbox_bool_table:any;
   train_test_split_ratio=0.7;
   randState=42;
+
+
   isTarget(element:any, index:any, array:any) { 
     return (!element.checkbox_val); 
  } 
@@ -49,6 +52,7 @@ export class ModelworkspaceComponent {
       this.selected_target_feature = this.columns_info_table.filter(this.isTarget)[0].Column_Name;
       this.columns_form = this._formBuilder.group(this.checkbox_bool_table);
     });
+    
     
   }
   proceed2($event: any) {

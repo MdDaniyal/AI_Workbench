@@ -78,4 +78,7 @@ position: relative;
 .file-input { 
   display: none;
 }
+.right{
+  text-align-last: right;
+}
 
