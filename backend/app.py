@@ -120,6 +120,21 @@ def dataset_info():
     finally:
         cursor_obj.close()
 
+@app.route('/upload_experiment_info/', methods=['POST'])
+def upload_experiment_info():
+  cursor_obj = con.cursor()
+  try:
+    expinfo = request.data
+    print(expinfo)
+    data = {'message' : 'Successfull'}
+    return jsonify(data), 200
+  except Exception as e:
+    data = {'message' : str(e)}
+    return jsonify(data), 500
+  finally:
+    cursor_obj.close()
+
+
 
 
 if __name__ == '__main__':
