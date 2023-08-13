@@ -1,4 +1,3 @@
-from sklearn.model_selection import train_test_split
 from sklearn import metrics
 from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import LinearRegression
@@ -12,7 +11,7 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.gaussian_process import GaussianProcessClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
-
+from sklearn.model_selection import train_test_split
 
 
 import io
@@ -63,4 +62,4 @@ class Classifier:
             model.fit(self.data_split[0], self.data_split[2])
             y_pred = model.predict(self.data_split[1])
             model_pickle = pickle.dumps(model)
-            self.trained_models.append({i:model_pickle, 'accuracy':metrics.accuracy_score(self.data_split[3], y_pred)})
+            self.trained_models.append({'name':i,'pickle' :model_pickle, 'accuracy':metrics.accuracy_score(self.data_split[3], y_pred)})

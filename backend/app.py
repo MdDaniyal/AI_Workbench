@@ -7,6 +7,8 @@ import psycopg2
 from flask_cors import CORS, cross_origin
 import json
 import io
+from classifier import Classifier
+
 app = Flask(__name__)
 CORS(app)
 
@@ -147,11 +149,28 @@ def upload_experiment_info():
     curr_date_object = datetime.fromtimestamp(curr_date)
     cursor_obj.execute("INSERT INTO public.experiments_collection (experiment_name, model_type, data_id, experiment_summary, deployment_status, created_on, experiment_status) VALUES(%s, %s, %s, %s, %s, %s, %s) RETURNING experiment_id;",(exp_name, model_type, data_id, exp_summ_json, False, curr_date_object, 'Running'))
     exid = cursor_obj.fetchone()[0]
-    con.commit() 
+    
+    con.commit()
+
+
+
+    clf = Classifier(exid, exp_summ)
+
+    clf.fetch_data(conn=con)
+
+    clf.train()
+
+    trained_models_list = clf.trained_models
+    print("before loop")
+    for i in trained_models_list:
+      print("inside loop")
+      cursor_obj.execute(" INSERT INTO public.models_collection (model_name, model_pickle, accuracy_score, experiment_id) VALUES(%s, %s, %s , %s) ;",(i['name'], i['pickle'], i['accuracy'], exid))
+      con.commit() 
 
     data = {'message' : 'The model is successfully trained.'}
     return jsonify(data), 200
   except Exception as e:
+    print(e)
     data = {'message' : str(e)}
     return jsonify(data), 500
   finally:
