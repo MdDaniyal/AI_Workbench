@@ -1,38 +1,114 @@
 {
     "Classification": [
         {
-            "value": "logreg",
+            "value": "lr",
             "model": "Logistic Regression"
         },
         {
-            "value": "logreg",
-            "model": "Logistic Regression"
+            "value": "rfc",
+            "model": "Random Forest"
         },
         {
-            "value": "logreg",
-            "model": "Logistic Regression"
+            "value": "svc",
+            "model": "SVC (Support Vector Classifier)"
         },
         {
-            "value": "logreg",
-            "model": "Logistic Regression"
+            "value": "dtc",
+            "model": "Decision Tree Classifier"
+        },
+        {
+            "value": "gnb",
+            "model": "Naive Bayes"
+        },
+        {
+            "value": "knn",
+            "model": "KNN"
+        },
+        {
+            "value": "adbst",
+            "model": "AdaBoost"
+        },
+        {
+            "value": "gpc",
+            "model": "Gaussian Process Classification"
+        },
+        {
+            "value": "lda",
+            "model": "Linear Discriminant Analysis (LDA)"
+        },
+        {
+            "value": "qda",
+            "model": "Quadratic Discriminant Analysis (QDA)"
         }
     ],
     "Regression": [
         {
-            "value": "logreg",
+            "value": "0",
             "model": "Linear Regression"
         },
         {
-            "value": "logreg",
+            "value": "1",
             "model": "Logistic Regression"
         },
         {
-            "value": "logreg",
-            "model": "Logistic Regression"
+            "value": "2",
+            "model": "Ridge Regression"
         },
         {
-            "value": "logreg",
-            "model": "Logistic Regression"
+            "value": "3",
+            "model": "Lasso Regression"
+        },
+        {
+            "value": "4",
+            "model": "Elastic Net Regression"
+        },
+        {
+            "value": "5",
+            "model": "Decision Trees"
+        },
+        {
+            "value": "6",
+            "model": "Random Forest"
+        },
+        {
+            "value": "7",
+            "model": "Support Vector Regression"
+        },
+        { 
+            "value": "8",
+            "model": "Gradient Boosting"
+        },
+        {
+            "value": "9",
+            "model": "Neural Networks (Multilayer Perceptron)"
+        },
+        {
+            "value": "10",
+            "model": "Bayesian Ridge Regression"
+        },
+        {
+            "value": "11",
+            "model": "KNN"
+        },
+        {
+            "value": "12",
+            "model": "LightGBM Regression"
+        },
+        {
+            "value": "13",
+            "model": "Gaussian Process Regression (GPR)"
+        },
+        {
+            "value": "14",
+            "model": "AdaBoost Regression"
+        },
+        {
+            "value": "15",
+            "model": "XGBoost Regression"
+        },
+        {
+            "value": "16",
+            "model": "CatBoost Regression"
         }
     ]
 }

@@ -45,13 +45,13 @@ def upload_file():
       current_GMT = time.gmtime()
       dt = calendar.timegm(current_GMT)
       dt_object = datetime.fromtimestamp(dt)
-
+                    
       #-------------------------Currently manually giving userid---------------------------------
       uid = 'daniyal012'
       #-------------------------Extracting filetype from filename--------------------------------
       ftype = fn.split('.')[-1]
       #-------------------------Inserting into db---------------------------------
-      cursor_obj.execute("INSERT INTO public.dataset(file_size, upload_time, user_id, file_type, file_name, data) VALUES(%s, %s, %s, %s,%s, %s);",(fsize, dt_object, uid, ftype, fname, d))
+      cursor_obj.execute("INSERT INTO public.datasets_collection(file_size, upload_time, user_id, file_type, file_name, data) VALUES(%s, %s, %s, %s,%s, %s);",(fsize, dt_object, uid, ftype, fname, d))
       con.commit()
 
       data = {'message' : 'Successfull'}
@@ -66,7 +66,7 @@ def upload_file():
 @app.route('/datasets/', methods=['GET'])
 def data_sets():
     try:
-        sql = '''SELECT data_id, file_name, user_id, upload_time, file_size, file_type FROM public.dataset;'''
+        sql = '''SELECT data_id, file_name, user_id, upload_time, file_size, file_type FROM public.datasets_collection;'''
         df = pd.read_sql_query(sql, con)
         df=df.sort_values(by='upload_time', ascending=False)
         df['upload_time'] = df['upload_time'].astype('str')
@@ -79,7 +79,7 @@ def data_sets():
 @app.route('/dataset_dropdown/', methods=['GET'])
 def dataset_dropdown():
     try:
-        sql = '''SELECT data_id, file_name, upload_time FROM public.dataset;'''
+        sql = '''SELECT data_id, file_name, upload_time FROM public.datasets_collection;'''
         df = pd.read_sql_query(sql, con)
         df=df.sort_values(by='upload_time', ascending=False)
         df['upload_time'] = df['upload_time'].astype('str')
@@ -98,7 +98,7 @@ def dataset_info():
     cursor_obj = con.cursor()
     try:
         dataid = request.args.get('dataid')
-        sql = '''SELECT data, file_type FROM public.dataset where data_id = {};'''.format(dataid)
+        sql = '''SELECT data, file_type FROM public.datasets_collection where data_id = {};'''.format(dataid)
         df = pd.read_sql_query(sql, con)
         dt=io.BytesIO(df['data'].to_list()[0])
         filetype = df['file_type'].to_list()[0]
@@ -125,8 +125,31 @@ def upload_experiment_info():
   cursor_obj = con.cursor()
   try:
     expinfo = request.data
-    print(expinfo)
-    data = {'message' : 'Successfull'}
+    exp_elements = json.loads(expinfo)
+    exp_summ = {}
+
+    training_features=[]
+    for key, val in exp_elements['training_features'].items():
+        if val == True:
+            training_features.append(key)
+    exp_summ['training_features']=training_features
+    exp_summ['target_feature']=exp_elements['targetfeature']
+    exp_summ['train_test_ratio']=exp_elements['train_test_ratio']
+    exp_summ['rand_state']=exp_elements['randstate']
+    exp_summ['models'] = exp_elements['selectedModels']
+    exp_summ_json = json.dumps(exp_summ)
+    exp_name = exp_elements['expname']
+    data_id = exp_elements['dataid']
+    model_type = exp_elements['problemtype']  
+
+    current_GMT = time.gmtime()
+    curr_date = calendar.timegm(current_GMT)
+    curr_date_object = datetime.fromtimestamp(curr_date)
+    cursor_obj.execute("INSERT INTO public.experiments_collection (experiment_name, model_type, data_id, experiment_summary, deployment_status, created_on, experiment_status) VALUES(%s, %s, %s, %s, %s, %s, %s) RETURNING experiment_id;",(exp_name, model_type, data_id, exp_summ_json, False, curr_date_object, 'Running'))
+    exid = cursor_obj.fetchone()[0]
+    con.commit() 
+
+    data = {'message' : 'The model is successfully trained.'}
     return jsonify(data), 200
   except Exception as e:
     data = {'message' : str(e)}
