@@ -1,0 +1,103 @@
+<div class="grid-container">
+    <h1 class="mat-h1">Experiment Summary</h1>
+    <mat-grid-list cols="3" rowHeight="230px">
+  
+      <mat-grid-tile colspan=2 rowspan=3>
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              <strong><br><font size="+2">Choose Experiment <br> <br></font></strong>
+            </mat-card-title>
+          </mat-card-header>
+  
+          <div class="table-responsive">
+            <table mat-table [dataSource]="experiments_info" class="mat-elevation-z8">
+                <ng-container matColumnDef="experiment_name">
+                    <th mat-header-cell *matHeaderCellDef>Experiment Name</th>
+                    <td mat-cell *matCellDef="let element">{{element.experiment_name}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="model_type">
+                    <th mat-header-cell *matHeaderCellDef>Model Type</th>
+                    <td mat-cell *matCellDef="let element">{{element.model_type}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="created_on">
+                  <th mat-header-cell *matHeaderCellDef>Created On</th>
+                  <td mat-cell *matCellDef="let element">{{element.created_on}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="experiment_status">
+                  <th mat-header-cell *matHeaderCellDef>Experiment Status</th>
+                  <td mat-cell *matCellDef="let element">{{element.experiment_status}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="select">
+                  <th mat-header-cell *matHeaderCellDef>Select Experiment</th>
+                  <td mat-cell *matCellDef="let element"><mat-radio-group name="select"
+                    (change) = "selected_exp()" [(ngModel)]="selected_experiment"><mat-radio-button
+                              [value]="element.experiment_id"
+                              name="select"></mat-radio-button></mat-radio-group></td>
+                            
+               </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumn_chooseExperiment; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumn_chooseExperiment;"></tr>
+
+
+
+            </table>
+        </div>
+  
+        </mat-card>
+      </mat-grid-tile>
+      <div class="Second-grid" *ngIf="show">
+    <mat-grid-tile colspan=1 rowspan=3>
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              <strong><font size="+2">Experiment Info :</font></strong>
+            </mat-card-title>
+          </mat-card-header>
+          <div class="table-responsive">
+            <table mat-table [dataSource]="selectedExperimentInfo" class="mat-elevation-z8">
+                <ng-container matColumnDef="model_name">
+                    <th mat-header-cell *matHeaderCellDef>Model Name</th>
+                    <td mat-cell *matCellDef="let element">{{element.model_name}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="accuracy_score">
+                    <th mat-header-cell *matHeaderCellDef>Accuracy</th>
+                    <td mat-cell *matCellDef="let element">{{element.accuracy_score}}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="select_model">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button color="primary" (click)="download(element)"aria-label="download-icon">
+                      <div *ngIf="dicon && element.downloaded == 0">
+                        <mat-icon>download</mat-icon>
+                      </div>
+                      <div *ngIf="cicon && element.downloaded == 1">
+                        <mat-icon>download_done</mat-icon>
+                      </div>
+                    </button>
+                  </td>
+                            
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumn_experimentInfo; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumn_experimentInfo;"></tr>
+
+
+
+            </table>
+        </div>
+        </mat-card>
+      </mat-grid-tile>
+    </div>
+    </mat-grid-list>
+  </div>
+  

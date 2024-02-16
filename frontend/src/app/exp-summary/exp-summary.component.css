@@ -1,0 +1,84 @@
+.grid-container {
+    margin: 20px;
+  }
+  .container {
+    padding-left: 15px;
+  position: relative;
+  }
+  .dashboard-card {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+
+  .dashboard-card-content {
+    text-align: center;
+  }
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    .mat-table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        display: table;
+        border-collapse: collapse;
+        margin: 0px;
+    }
+    .mat-row,
+    .mat-header-row {
+        display: table-row;
+    }
+    .mat-cell,
+    .mat-header-cell {
+        word-wrap: initial;
+        display: table-cell;
+        padding: 0px 5px;
+        line-break: unset;
+        width: auto;
+        white-space: nowrap;
+        overflow: hidden;
+        vertical-align: middle;
+    }
+  }
+  .mat-form-field {
+    margin: 40px 0;
+    width: 500px !important;
+  }
+  .mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+  }
+  .mat-toolbar-single-row button {
+    width: 200px;
+  }
+  .mat-form-field {
+    width: 100%;
+  }
+  #uploadFile {
+    top: 0px;
+    left: 0px;
+    width: 100%;    
+    z-index: 9;
+    opacity: 0;
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+  }
+
+  .file-input { 
+    display: none;
+  }
+  .right{
+    text-align-last: right;
+  }
+

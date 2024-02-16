@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from flask import send_file
 from datetime import datetime
 import calendar
 import time
@@ -7,6 +8,7 @@ import psycopg2
 from flask_cors import CORS, cross_origin
 import json
 import io
+import pickle
 from classifier import Classifier
 
 app = Flask(__name__)
@@ -176,8 +178,71 @@ def upload_experiment_info():
   finally:
     cursor_obj.close()
 
+@app.route('/choose_experiment/', methods=['GET'])
+def choose_experiment():
+    try:
+        sql = '''select experiment_name, experiment_id, experiment_status, model_type, created_on from experiments_collection order by created_on desc  ;'''
+        df = pd.read_sql_query(sql, con)
+        df['created_on'] = df['created_on'].astype('str')
+        d = df.to_json(orient = "records")
+        return jsonify(eval(d)), 200
+    except Exception as e:
+        data = {'message' : str(e)}
+        return jsonify(data), 500
+    
+@app.route('/experiment_info/', methods=['GET'])
+def experiment_info():
+    cursor_obj = con.cursor()
+    try:
+        expid = request.args.get('expid')
+        sql = '''select model_id, model_name, accuracy_score from models_collection where experiment_id = {};'''.format(expid)
+        df = pd.read_sql_query(sql, con)
+        model_names_dic = {"lr":"Logistic Regression",
+                                "rfc":"Random Forest Classifier",
+                                "svc":"SVC(Support Vector Classifier)",
+                                "dtc":"Decision Tree Classifier",
+                                "gnb":"GaussianNB",
+                                "knn":"KNN",
+                                "adbst":"AdaBoost",
+                                "gpc":"Gaussian Process Classifier",
+                                "lda":"Linear Discriminant Analysis",
+                                "qda":"Quadratic Discriminant Analysis"
+                                }
+        modelNames = []
+        for i in df['model_name']:
+            df['model_name'] = df['model_name'].replace(i, model_names_dic[i])
+            modelNames.append(i)
+        df['modelNames'] = modelNames
+        df['downloaded'] = 0
+        d = df.to_json(orient = "records")
+        return jsonify(eval(d)), 200
+    except Exception as e:
+        data = {'message' : str(e)}
+        return jsonify(data), 500
+    finally:
+        cursor_obj.close()
 
+@app.route('/download_model/')
+def download_model():
+    cursor_obj = con.cursor()
+    try:
+        modid = request.args.get('modid')
+        sql = '''select model_pickle, model_name, model_id from models_collection where model_id = {};'''.format(modid)
+        cursor_obj.execute(sql)
+        row = cursor_obj.fetchone()
+        model_pickle = row[0]
+        model_name = row[1]
+        model_id = row[2]
+        # model_data = pickle.loads(model_pickle)
+        filename = f"{model_name}{model_id}.pickle"
+        print(modid)
+        return send_file(io.BytesIO(model_pickle), mimetype='application/octet-stream', as_attachment=True, download_name=filename), 200
 
+    except Exception as e:
+        data = {'message' : str(e)}
+        return jsonify(data), 500
+    finally:
+        cursor_obj.close()
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug = True)

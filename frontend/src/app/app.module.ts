@@ -24,12 +24,15 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
+import { ExpSummaryComponent } from './exp-summary/exp-summary.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavigatorComponent,
     DatasafeComponent,
     ModelworkspaceComponent,
+    ExpSummaryComponent,
   ],
   imports: [
     BrowserModule,
